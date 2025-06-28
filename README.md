@@ -6,6 +6,10 @@
 
     pip install pipenv==2022.4.8
 
+#### set pipenv
+
+    pipenv --python ~/.pyenv/versions/3.8.10/bin/python
+
 #### 安裝 repo 套件
 
     pipenv sync
@@ -77,6 +81,14 @@
 
     docker compose -f rabbitmq-network.yml down
 
+#### 啟動 mysql
+
+    docker compose -f mysql.yml up -d
+
+#### 關閉 mysql
+
+    docker compose -f mysql.yml down
+
 #### 啟動 worker
 
     docker compose -f docker-compose-worker-network.yml up -d
@@ -114,4 +126,10 @@
 
     docker logs container_name
 
+#### 下載 taiwan_stock_price.csv
 
+    wget https://github.com/FinMind/FinMindBook/releases/download/data/taiwan_stock_price.csv
+
+#### 上傳 taiwan_stock_price.csv
+
+    pipenv run python crawler/upload_taiwan_stock_price_to_mysql.py
